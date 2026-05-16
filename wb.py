@@ -8,10 +8,10 @@ def save_config():
     with open(CONFIG_FILE, "w") as f: json.dump(config_data, f, indent=4)
 print("==========================================\n   Fleet Commander Bot - Auto-Bypass Edition\n==========================================")
 config_data["TELEGRAM_TOKEN"] = os.getenv("TELEGRAM_TOKEN")
-config_data["ADMIN_ID"] = int(os.getenv("ADMIN_ID"))
-startup_max_spins = int(os.getenv("MAX_SPINS", "50"))
 TELEGRAM_TOKEN = config_data["TELEGRAM_TOKEN"]
-ADMIN_ID = config_data["ADMIN_ID"]
+startup_max_spins = int(os.getenv("MAX_SPINS", "50"))
+
+
 
 ALLOWED_ADMINS = []
 
