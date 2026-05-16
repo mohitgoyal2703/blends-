@@ -10,6 +10,9 @@ print("==========================================\n   Fleet Commander Bot - Auto
 config_data["TELEGRAM_TOKEN"] = os.getenv("TELEGRAM_TOKEN")
 config_data["ADMIN_ID"] = int(os.getenv("ADMIN_ID"))
 startup_max_spins = int(os.getenv("MAX_SPINS", "50"))
+TELEGRAM_TOKEN = config_data["TELEGRAM_TOKEN"]
+ADMIN_ID = config_data["ADMIN_ID"]
+
 ALLOWED_ADMINS = [1232325263,1315976095,791363068,5951473320,5347185906]
 if ADMIN_ID not in ALLOWED_ADMINS:
     print("\n❌ ACCESS DENIED: Your Admin ID is not on the hardcoded hardware license list.")
