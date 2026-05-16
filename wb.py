@@ -38,7 +38,7 @@ def log_event(message, is_error=False):
     if is_error:
         try: bot.send_message(ADMIN_ID, f"⚠️ <b>SYSTEM ERROR</b>\n\n<code>{message}</code>", parse_mode="HTML")
         except: pass
-def is_authorized(user_id): return user_id == ADMIN_ID or user_id in config_data.get("AUTHORIZED_USERS", [])
+def is_authorized(user_id): return user_id == ALLOWED_ADMINS or user_id in config_data.get("AUTHORIZED_USERS", [])
 def record_history(chat_id, phone, status, reward="None", tries=0):
     history_log.append({"chat_id": chat_id, "phone": phone, "status": status, "reward": reward, "tries": tries, "timestamp": now_ist()})
 def save_session(chat_id, phone, master_key, user_key, data_key, access_token, spin_count=0):
