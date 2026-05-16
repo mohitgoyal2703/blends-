@@ -13,11 +13,16 @@ startup_max_spins = int(os.getenv("MAX_SPINS", "50"))
 TELEGRAM_TOKEN = config_data["TELEGRAM_TOKEN"]
 ADMIN_ID = config_data["ADMIN_ID"]
 
-ALLOWED_ADMINS = [1232325263,1315976095,791363068,5951473320,5347185906]
-if ADMIN_ID not in ALLOWED_ADMINS:
-    print("\n❌ ACCESS DENIED: Your Admin ID is not on the hardcoded hardware license list.")
-    time.sleep(3); sys.exit(1)
+ALLOWED_ADMINS = []
 
+try:
+    admin_env = os.getenv("ADMIN_ID", "")
+    ALLOWED_ADMINS = [int(x.strip()) for x in admin_env.split(",") if x.strip()]
+    ADMIN_ID = ALLOWED_ADMINS[0]
+except Exception as e:
+    print("ADMIN_ID ERROR:", e)
+    sys.exit(1)
+    
 print("\n✅ Authorization Successful. Booting systems...")
 PINCODE = "110021"
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
